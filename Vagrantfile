@@ -12,5 +12,6 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
   # Every Vagrant virtual environment requires a box to build off of.
   config.vm.box = "hashicorp/precise64"
   config.vm.synced_folder "_html", "/var/www"
-  config.vm.provision :shell, path: "postinstall.sh"
+  config.vm.provision :shell, privileged: false, path: "postinstall.sh"
+  config.vm.network "private_network", ip: "192.168.31.11"
 end
